@@ -1,0 +1,34 @@
+Question : https://leetcode.com/problems/middle-of-the-linked-list/description/
+
+Code on leetcode :
+
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+        unordered_map<int,int> mp;
+        int ans;
+        for(int i =0 ;i<nums.size();i++){
+            mp[nums[i]]++;
+        }
+        for(auto i : mp){
+            if(i.second >1) ans = i.first;
+        }
+        return ans;
+    }
+};
+
+
+Code on Code studio : 
+
+
+Node *findMiddle(Node *head) {
+    // Write your code here
+    Node *slow=head;
+    Node *fast=head;
+    while(fast!=NULL && fast->next!=NULL){
+        slow=slow->next;
+        fast=fast->next->next;
+    }
+    return slow;
+}
+
